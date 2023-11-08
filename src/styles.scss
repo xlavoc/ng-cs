@@ -1,1 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+$body-bg: #f9f9f9;
+$body-color: #848383;
+$font-family-base: Arial, Helvetica, sans-serif;
+$primary: #30c2d5;
+$border-color: #B7B7B7;
+
+@import "node_modules/bootstrap/scss/bootstrap";
