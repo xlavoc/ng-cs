@@ -1,0 +1,22 @@
+p {
+  margin-bottom: .5rem;
+  line-height: 1.25rem;
+
+  &:nth-of-type(2) {
+    font-size: 1.125rem;
+  }
+}
+
+.card-body {
+  padding: 2rem 3rem;
+}
+
+img {
+  border-radius: 1.25rem 1.25rem 0 0;
+
+  @media (min-width: 768px) {
+    border-radius: 1.25rem 0 0 1.25rem;
+    min-height: 15rem;
+    object-fit: cover;
+  }
+}
