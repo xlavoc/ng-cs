@@ -1,6 +1,6 @@
 input {
   height: 2.5rem;
-  padding: .125rem .125rem .125rem 1.25rem;
+  padding: 0.125rem 0.125rem 0.125rem 1.25rem;
 
   &[type="checkbox"] {
     width: 1.5rem;
@@ -9,13 +9,13 @@ input {
 
   &::placeholder {
     color: var(--bs-border-color);
-    font-size: .875rem;
+    font-size: 0.875rem;
   }
 }
 label {
   &[for="checkDefault"] {
     margin-left: 1rem;
-    margin-top: .25rem;
+    margin-top: 0.25rem;
     line-height: 1.5rem;
   }
 }
@@ -23,4 +23,3 @@ label {
 button {
   height: 2.5rem;
 }
-

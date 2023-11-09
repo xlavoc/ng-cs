@@ -1,1 +1,27 @@
-<p>card-list works!</p>
+<p class="d-none d-md-block">&nbsp;</p>
+<p class="d-none d-xl-block">&nbsp;</p>
+
+<ul class="list-group">
+  <li *ngFor="let flight of loadedData">
+    <app-card [flightData]="flight"></app-card>
+  </li>
+
+  <div *ngIf="isFetching" class="text-center mt-3 pb-5">
+    <div class="spinner-grow" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</ul>
+
+<div
+  *ngIf="hasNextPage && !isFetching"
+  class="container d-flex my-3 justify-content-end"
+>
+  <button
+    (click)="onLoadMore()"
+    type="button"
+    class="btn btn-link text-reset text-decoration-none"
+  >
+    załaduj więcej >
+  </button>
+</div>
