@@ -9,10 +9,26 @@ import { FetchSpacexApiResponse } from './fetch-spacex-api-response.model';
 export class FetchSpacexApiDataService {
   constructor(private http: HttpClient) {}
 
-  fetchData(page: number = 1) {
+  fetchData(
+    page: number = 1,
+    name: string = '',
+    success: boolean | undefined = undefined,
+  ) {
     return this.http
       .post('https://api.spacexdata.com/v5/launches/query', {
-        query: {},
+        query: {
+          $and: [
+            {
+              name: {
+                $regex: name,
+                $options: 'i',
+              },
+            },
+            {
+              success: success,
+            },
+          ],
+        },
         options: {
           limit: 20,
           page: page,
@@ -50,8 +66,6 @@ export class FetchSpacexApiDataService {
       })
       .pipe(
         map((response: FetchSpacexApiResponse) => {
-          console.log(response);
-
           return response;
         }),
       );
