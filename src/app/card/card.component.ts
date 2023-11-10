@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Flight } from '../flight.model';
 
 @Component({
@@ -6,8 +6,20 @@ import { Flight } from '../flight.model';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
-export class CardComponent {
+export class CardComponent implements OnInit {
   @Input() flightData?: Flight;
+  showDetails = false;
+
+  ngOnInit(): void {
+  }
+
+  onShowDetails() {
+    this.showDetails = true;
+  };
+
+  onCloseDetailPanel(closeDetailPanel: boolean) {
+    this.showDetails = closeDetailPanel;
+  }
 
   getPhoto(): string | boolean {
     const mainThumb = this.flightData.links.flickr.small[0];

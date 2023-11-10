@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   EventEmitter,
@@ -19,7 +18,7 @@ export class NavbarComponent implements OnInit {
   @ViewChild('flightDateRange') flightDateRangeInputRef: ElementRef;
   @ViewChild('showSuccessFlights') showSuccessFlightsCheckboxRef: ElementRef;
   @Output() searchParamsAdded = new EventEmitter<SearchParams>();
-  isButtonDisabled = true;
+  // isButtonDisabled = true;
 
   ngOnInit(): void {}
 

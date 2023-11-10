@@ -6,7 +6,7 @@
         <img
           *ngIf="getPhoto()"
           src="{{ getPhoto() }}"
-          class="img-fluid"
+          class="img-fluid object-fit-cover"
           alt="Zdjęcie"
         />
       </div>
@@ -15,7 +15,7 @@
           <p># {{ flightData.flight_number }}</p>
           <p class="fw-bold">{{ flightData.name }}</p>
           <p>{{ flightData.date_utc | date: "YYYY-MM-dd" }}</p>
-          <button class="btn btn-outline-primary px-5 mt-1 rounded-3 small">
+          <button (click)="onShowDetails()" class="btn btn-outline-primary px-5 mt-1 rounded-3 small">
             więcej >
           </button>
         </div>
@@ -23,3 +23,4 @@
     </div>
   </div>
 </div>
+<app-details *ngIf="showDetails" [flightData]="flightData" (closeDetailPanel)="onCloseDetailPanel($event)"></app-details>
