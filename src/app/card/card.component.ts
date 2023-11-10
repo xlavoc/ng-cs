@@ -10,12 +10,11 @@ export class CardComponent implements OnInit {
   @Input() flightData?: Flight;
   showDetails = false;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onShowDetails() {
     this.showDetails = true;
-  };
+  }
 
   onCloseDetailPanel(closeDetailPanel: boolean) {
     this.showDetails = closeDetailPanel;
