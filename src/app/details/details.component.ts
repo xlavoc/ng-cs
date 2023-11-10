@@ -15,4 +15,11 @@ export class DetailsComponent implements OnInit {
   onClose() {
     this.closeDetailPanel.emit(false);
   }
+
+  getAllImages(): string[] {
+    const mainImgs = this.flightData.links.flickr.original;
+    const rocketImgs = this.flightData.rocket.flickr_images;
+
+    return [...mainImgs, ...rocketImgs];
+  }
 }

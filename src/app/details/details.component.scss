@@ -1,3 +1,10 @@
+.container-fluid {
+  top: 0;
+  bottom: 0;
+  position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 header {
   height: 116px;
   border-bottom: 1px solid var(--bs-gray-300);
@@ -12,3 +19,50 @@ p {
 .vr {
   height: 52px;
 }
+.carousel-inner {
+  max-height: 400px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 8%;
+  top: auto;
+  bottom: 5.5rem;
+
+  .carousel-control-next-icon,
+  .carousel-control-prev-icon {
+    width: 29px;
+    height: 50px;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23ced4da' viewBox='0 0 29 50'%3E%3Cpath d='M28.5017 3.00601C28.8339 3.34001 29 3.72411 29 4.15832C29 4.59252 28.8339 4.97662 28.5017 5.31062L8.91924 25L28.5017 44.6894C28.8339 45.0234 29 45.4075 29 45.8417C29 46.2759 28.8339 46.66 28.5017 46.994L26.0103 49.499C25.6781 49.833 25.2961 50 24.8643 50C24.4324 50 24.0504 49.833 23.7182 49.499L0.498282 26.1523C0.166094 25.8183 0 25.4342 0 25C0 24.5658 0.166094 24.1817 0.498282 23.8477L23.7182 0.501002C24.0504 0.167001 24.4324 0 24.8643 0C25.2961 0 25.6781 0.167001 26.0103 0.501002L28.5017 3.00601Z'/%3E%3C/svg%3E");
+  }
+  .carousel-control-next-icon {
+    transform: rotate(180deg);
+  }
+}
+
+.carousel-indicators {
+  position: static;
+  margin-left: 8%;
+  margin-right: 8%;
+  height: 200px;
+  column-gap: 1rem;
+  overflow: hidden;
+
+  button.thumbnail {
+    min-width: 160px;
+    border-top-width: 30px;
+    & > img {
+      border-radius: 1rem;
+      max-height: 106px;
+    }
+  }
+  button.thumbnail:not(.active) {
+    opacity: 0.7;
+  }
+}
+// @media screen and (min-width: 992px) {
+//   .carousel {
+//     max-width: 70%;
+//     margin: 0 auto;
+//   }
+// }

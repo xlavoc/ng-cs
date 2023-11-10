@@ -1,6 +1,4 @@
-<div
-  class="container-fluid z-2 position-fixed top-0 start-0 bg-body min-vh-100"
->
+<div class="container-fluid z-2 bg-body">
   <header class="container">
     <div class="d-flex flex-row pt-5">
       <button (click)="onClose()" class="btn text-primary">
@@ -33,24 +31,97 @@
     <div class="row row-gap-4">
       <div class="col-md-6">
         <div class="bg-white p-5 shadow-lg rounded-4">
-          <p>Lot: <strong>{{ flightData.name }}</strong></p>
-          <p>Data lotu: <strong>{{ flightData.date_utc | date: "YYYY-MM-dd" }}</strong></p>
-          <p>Status: <strong>{{ flightData.success ? 'Udany' : 'Nieudany' }}</strong></p>
+          <p>
+            Lot: <strong>{{ flightData.name }}</strong>
+          </p>
+          <p>
+            Data lotu:
+            <strong>{{ flightData.date_utc | date: "YYYY-MM-dd" }}</strong>
+          </p>
+          <p>
+            Status:
+            <strong>{{ flightData.success ? "Udany" : "Nieudany" }}</strong>
+          </p>
         </div>
       </div>
       <div class="col-md-6">
         <div class="bg-white p-5 shadow-lg rounded-4">
-          <p>Załoga: <strong>{{ flightData.crew.length }}</strong></p>
-          <p>Rakieta: <strong>{{ flightData.rocket.name }}</strong></p>
-          <p>Start: <strong>{{ flightData.launchpad.name }}</strong></p>
+          <p>
+            Załoga: <strong>{{ flightData.crew.length }}</strong>
+          </p>
+          <p>
+            Rakieta: <strong>{{ flightData.rocket.name }}</strong>
+          </p>
+          <p>
+            Start: <strong>{{ flightData.launchpad.name }}</strong>
+          </p>
         </div>
       </div>
     </div>
+
+    <!-- Start Carousel -->
+    <div
+      id="app-carousel"
+      class="carousel slide my-4 bg-white rounded-4 shadow-lg"
+      data-bs-ride="carousel"
+    >
+      <div class="carousel-inner rounded-top-4">
+        <div
+          *ngFor="let img of getAllImages(); index as i"
+          [ngClass]="i === 0 ? 'active' : undefined"
+          class="carousel-item"
+        >
+          <img
+            [src]="img"
+            class="d-block w-100 object-fit-cover"
+            alt="Zdjęcie"
+          />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#app-carousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Poprzedni</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#app-carousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Następny</span>
+      </button>
+      <div class="carousel-indicators justify-content-start">
+        <button
+          *ngFor="let img of getAllImages(); index as i"
+          type="button"
+          data-bs-target="#app-carousel"
+          [attr.data-bs-slide-to]="i"
+          class="thumbnail"
+          [ngClass]="i === 0 ? 'active' : undefined"
+          [attr.aria-current]="i === 0 ? true : undefined"
+        >
+          <img
+            [src]="img"
+            class="d-block w-100 object-fit-cover"
+            alt="miniaturka zdjęcia"
+          />
+        </button>
+      </div>
+    </div>
+    <!-- End Carousel -->
+
     <div *ngIf="flightData.details" class="row row-gap-4">
-      <div class="col-12 my-4">
+      <div class="col-12 mb-4">
         <div class="bg-white p-5 shadow-lg rounded-4">
           <p>{{ flightData.details }}</p>
         </div>
       </div>
+    </div>
   </div>
 </div>

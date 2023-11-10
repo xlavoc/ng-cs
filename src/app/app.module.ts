@@ -10,6 +10,7 @@ import { CardComponent } from './card/card.component';
 import { CardListComponent } from './card-list/card-list.component';
 import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from './details/details.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,8 +20,15 @@ import { DetailsComponent } from './details/details.component';
     CardListComponent,
     HomeComponent,
     DetailsComponent,
+    CardComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    NgbModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
