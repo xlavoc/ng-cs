@@ -1,52 +1,54 @@
-<nav class="container pt-4 sticky-md-top z-1 bg-body">
-  <form>
-    <div class="row align-items-end gy-4">
-      <div class="col-12 col-md-6 col-xl-3">
-        <label for="inputFlightName" class="form-label mb-1 small"
-          >Nazwa lotu</label
-        >
-        <input
-          type="text"
-          class="form-control bg-white"
-          id="inputFlightName"
-          placeholder="Wpisz nazwę"
-          #flightName
-        />
+<nav class="container-fluid sticky-md-top z-1 bg-body">
+  <div class="container pt-4">
+    <form>
+      <div class="row align-items-end gy-4">
+        <div class="col-12 col-md-6 col-xl-3">
+          <label for="inputFlightName" class="form-label mb-1 small"
+            >Nazwa lotu</label
+          >
+          <input
+            type="text"
+            class="form-control bg-white"
+            id="inputFlightName"
+            placeholder="Wpisz nazwę"
+            #flightName
+          />
+        </div>
+        <div class="col-12 col-md-6 col-xl-3">
+          <label for="inputFlightDateRange" class="form-label mb-1 small"
+            >Data lotu</label
+          >
+          <input
+            type="text"
+            class="form-control bg-white"
+            id="inputFlightDateRange"
+            placeholder="RRRR/MM/DD - RRRR/MM/DD"
+            #flightDateRange
+          />
+        </div>
+        <div class="col-12 col-md-6 col-xl-3 mb-2">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="checkDefault"
+            value=""
+            #showSuccessFlights
+          />
+          <label class="form-check-label small" for="checkDefault">
+            Pokaż tylko udane loty
+          </label>
+        </div>
+        <div class="col-12 col-md-6 col-xl-3 d-grid">
+          <button
+            (click)="onSearchFlights(); onErrorOccurred()"
+            type="submit"
+            class="btn btn-primary text-white"
+          >
+            szukaj
+          </button>
+        </div>
       </div>
-      <div class="col-12 col-md-6 col-xl-3">
-        <label for="inputFlightDateRange" class="form-label mb-1 small"
-          >Data lotu</label
-        >
-        <input
-          type="text"
-          class="form-control bg-white"
-          id="inputFlightDateRange"
-          placeholder="RRRR/MM/DD - RRRR/MM/DD"
-          #flightDateRange
-        />
-      </div>
-      <div class="col-12 col-md-6 col-xl-3 mb-2">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          id="checkDefault"
-          value=""
-          #showSuccessFlights
-        />
-        <label class="form-check-label small" for="checkDefault">
-          Pokaż tylko udane loty
-        </label>
-      </div>
-      <div class="col-12 col-md-6 col-xl-3 d-grid">
-        <button
-          (click)="onSearchFlights()"
-          type="submit"
-          class="btn btn-primary text-white"
-        >
-          szukaj
-        </button>
-      </div>
-    </div>
-  </form>
-  <hr class="my-4" />
+    </form>
+    <hr class="my-4" />
+  </div>
 </nav>

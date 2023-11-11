@@ -1,7 +1,7 @@
 <p class="d-none d-md-block">&nbsp;</p>
 <p class="d-none d-xl-block">&nbsp;</p>
 
-<ul class="list-group">
+<ul *ngIf="!error" class="list-group">
   <li *ngFor="let flight of loadedData">
     <app-card [flightData]="flight"></app-card>
   </li>
@@ -13,8 +13,17 @@
   </div>
 </ul>
 
+<div *ngIf="error" class="container alert alert-danger" role="alert">
+  <h3>Wystąpił błąd :(</h3>
+  <p>
+    {{ error.message }}
+    <br />
+    {{ error.error }}
+  </p>
+</div>
+
 <div
-  *ngIf="hasNextPage && !isFetching"
+  *ngIf="hasNextPage && !isFetching && !error"
   class="container d-flex my-3 justify-content-end"
 >
   <button

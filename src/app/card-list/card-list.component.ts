@@ -8,6 +8,7 @@ import {
 import { FetchSpacexApiDataService } from '../fetch-spacex-api-data.service';
 import { Flight } from '../flight.model';
 import { SearchParams } from '../search-params.model';
+import { ErrorAlert } from '../error-alert.model';
 
 @Component({
   selector: 'app-card-list',
@@ -15,11 +16,12 @@ import { SearchParams } from '../search-params.model';
   styleUrls: ['./card-list.component.scss'],
 })
 export class CardListComponent implements OnInit, OnChanges {
+  @Input() searchParams: SearchParams = null;
+  @Input() error: ErrorAlert = null;
   loadedData: Flight[] = [];
   isFetching = false;
   hasNextPage = false;
   page = 1;
-  @Input() searchParams: SearchParams = null;
 
   constructor(private fetchDataService: FetchSpacexApiDataService) {}
 
@@ -39,18 +41,32 @@ export class CardListComponent implements OnInit, OnChanges {
   }
 
   fetchData(keepPreviousData?: boolean) {
+    if (this.error) return;
+
     this.isFetching = true;
     this.fetchDataService
-      .fetchData(this.page, this.searchParams.name, this.searchParams.isSuccess)
-      .subscribe((res) => {
-        console.log(res);
-        this.isFetching = false;
-        this.hasNextPage = res.hasNextPage;
-        if (keepPreviousData) {
-          this.loadedData.push(...res.docs);
-          return;
-        }
-        this.loadedData = res.docs;
+      .fetchData(
+        this.page,
+        this.searchParams.name,
+        this.searchParams.dateFrom,
+        this.searchParams.dateTo,
+        this.searchParams.isSuccess,
+      )
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          this.isFetching = false;
+          this.hasNextPage = res.hasNextPage;
+          if (keepPreviousData) {
+            this.loadedData.push(...res.docs);
+            return;
+          }
+          this.loadedData = res.docs;
+        },
+        error: (error) => {
+          this.error = error;
+          this.isFetching = false;
+        },
       });
   }
 }

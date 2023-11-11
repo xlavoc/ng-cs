@@ -12,6 +12,8 @@ export class FetchSpacexApiDataService {
   fetchData(
     page: number = 1,
     name: string = '',
+    dateFrom: string = '2000-01-01T00:00:00.000Z',
+    dateTo: string = new Date().toISOString(),
     success: boolean | undefined = undefined,
   ) {
     return this.http
@@ -22,6 +24,12 @@ export class FetchSpacexApiDataService {
               name: {
                 $regex: name,
                 $options: 'i',
+              },
+            },
+            {
+              date_utc: {
+                $gte: dateFrom || '2000-01-01T00:00:00.000Z',
+                $lte: dateTo || new Date().toISOString(),
               },
             },
             {
