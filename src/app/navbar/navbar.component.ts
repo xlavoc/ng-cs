@@ -33,16 +33,43 @@ export class NavbarComponent implements OnInit {
 
     const extractDates = (str: string) => {
       const noDates = ['', ''];
-      if (str) {
-        if (str.length < 10)
+      const s = str.trim();
+      if (s) {
+        if (s.length < 10) {
           this.datesError = new ErrorAlert(
             'Nieprawidłowy format daty',
             'Za mało znaków',
           );
-        const regex = /( |,|;)/;
-        const cleanString = str.trim().replace(regex, ' ');
+          return noDates;
+        }
 
+        if (s.length > 10 && s.search(' - ') === -1) {
+          this.datesError = new ErrorAlert(
+            'Nieprawidłowy format separatora dat',
+            'Separator musi posiadać format " - " (spacja myślnik spacja)',
+          );
+          return noDates;
+        }
+
+        const cleanString = s.replace(' - ', ' ');
         const arr = cleanString.split(' ');
+
+        for (const [i, date] of arr.entries()) {
+          const format = /^\d{4}[/]\d{2}[/]\d{2}$/.test(date);
+          console.log('format', format);
+
+          if (!format) {
+            this.datesError = new ErrorAlert(
+              'Nieprawidłowy format daty',
+              'Data musi posiadać format: RRRR/MM/DD',
+            );
+            return noDates;
+          }
+          const finalDate = date.replaceAll('/', '-');
+          arr[i] = finalDate;
+        }
+        console.log(arr);
+
         if (arr.length === 1) return [...arr, ''];
         return arr.slice(0, 2);
       }
