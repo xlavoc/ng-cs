@@ -56,7 +56,6 @@ export class NavbarComponent implements OnInit {
 
         for (const [i, date] of arr.entries()) {
           const format = /^\d{4}[/]\d{2}[/]\d{2}$/.test(date);
-          console.log('format', format);
 
           if (!format) {
             this.datesError = new ErrorAlert(
@@ -68,7 +67,6 @@ export class NavbarComponent implements OnInit {
           const finalDate = date.replaceAll('/', '-');
           arr[i] = finalDate;
         }
-        console.log(arr);
 
         if (arr.length === 1) return [...arr, ''];
         return arr.slice(0, 2);
@@ -84,7 +82,6 @@ export class NavbarComponent implements OnInit {
       !flightShowSuccess ? undefined : true,
     );
     this.searchParamsAdded.emit(newSearch);
-    console.log(newSearch);
   }
 
   onErrorOccurred() {

@@ -54,7 +54,6 @@ export class CardListComponent implements OnInit, OnChanges {
       )
       .subscribe({
         next: (res) => {
-          console.log(res);
           this.isFetching = false;
           this.hasNextPage = res.hasNextPage;
           if (keepPreviousData) {
