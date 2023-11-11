@@ -65,7 +65,7 @@ export class NavbarComponent implements OnInit {
             return noDates;
           }
           const finalDate = date.replaceAll('/', '-');
-          arr[i] = finalDate;
+          arr[i] = finalDate + 'T00:00:00.000Z';
         }
 
         if (arr.length === 1) return [...arr, ''];
