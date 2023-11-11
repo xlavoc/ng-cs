@@ -9,11 +9,16 @@ import { Flight } from '../flight.model';
 export class DetailsComponent implements OnInit {
   @Output() closeDetailPanel = new EventEmitter<boolean>();
   @Input() flightData: Flight;
+  activeSlide = 1;
 
   ngOnInit(): void {}
 
   onClose() {
     this.closeDetailPanel.emit(false);
+  }
+
+  onSlide(event) {
+    this.activeSlide = event.to + 1;
   }
 
   getAllImages(): string[] {

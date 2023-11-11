@@ -64,6 +64,7 @@
       id="app-carousel"
       class="carousel slide my-4 bg-white rounded-4 shadow-lg"
       data-bs-ride="carousel"
+      (slide.bs.carousel)="onSlide($event)"
     >
       <div class="carousel-inner rounded-top-4">
         <div
@@ -96,13 +97,13 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Następny</span>
       </button>
-      <div class="carousel-indicators justify-content-start">
+      <div class="carousel-indicators justify-content-start d-none d-lg-block">
         <button
           *ngFor="let img of getAllImages(); index as i"
           type="button"
           data-bs-target="#app-carousel"
           [attr.data-bs-slide-to]="i"
-          class="thumbnail"
+          class="thumbnail mx-2"
           [ngClass]="i === 0 ? 'active' : undefined"
           [attr.aria-current]="i === 0 ? true : undefined"
         >
@@ -113,6 +114,7 @@
           />
         </button>
       </div>
+      <div class="text-center text-body-secondary slider-counter">{{ activeSlide }}/{{ getAllImages().length }}</div>
     </div>
     <!-- End Carousel -->
 
