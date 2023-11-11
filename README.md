@@ -1,6 +1,6 @@
 # NgCs
 
-This written in Angular 16 Bootstrap 5
+This project is written in Angular 16 Bootstrap 5\
 [Project preview](http://robak.artsklep.pl/ng-cs/)
 
 ## Installation
