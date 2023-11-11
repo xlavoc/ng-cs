@@ -8,17 +8,8 @@ import { Flight } from '../flight.model';
 })
 export class CardComponent implements OnInit {
   @Input() flightData?: Flight;
-  showDetails = false;
 
   ngOnInit(): void {}
-
-  onShowDetails() {
-    this.showDetails = true;
-  }
-
-  onCloseDetailPanel(closeDetailPanel: boolean) {
-    this.showDetails = closeDetailPanel;
-  }
 
   getPhoto(): string | boolean {
     const mainThumb = this.flightData.links.flickr.small[0];

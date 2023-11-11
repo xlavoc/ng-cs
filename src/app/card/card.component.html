@@ -16,8 +16,10 @@
           <p class="fw-bold">{{ flightData.name }}</p>
           <p>{{ flightData.date_utc | date: "YYYY-MM-dd" }}</p>
           <button
-            (click)="onShowDetails()"
+            type="button"
             class="btn btn-outline-primary px-5 mt-1 rounded-3 small"
+            data-bs-toggle="modal"
+            [attr.data-bs-target]="'#a' + flightData.id"
           >
             więcej >
           </button>
@@ -26,8 +28,13 @@
     </div>
   </div>
 </div>
+
 <app-details
-  *ngIf="showDetails"
+  class="modal fade"
+  [id]="'a' + flightData.id"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
   [flightData]="flightData"
-  (closeDetailPanel)="onCloseDetailPanel($event)"
+  data-bs-backdrop="static"
 ></app-details>

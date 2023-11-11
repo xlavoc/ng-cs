@@ -1,2 +1,8 @@
-<app-navbar (searchParamsAdded)="onSearchParamsAdded($event)" (errorOccurred)="onErrorOccurred($event)"></app-navbar>
-<app-card-list [searchParams]="searchParams" [error]="errorOccurred"></app-card-list>
+<app-navbar
+  (searchParamsAdded)="onSearchParamsAdded($event)"
+  (errorOccurred)="onErrorOccurred($event)"
+></app-navbar>
+<app-card-list
+  [searchParams]="searchParams"
+  [error]="errorOccurred"
+></app-card-list>

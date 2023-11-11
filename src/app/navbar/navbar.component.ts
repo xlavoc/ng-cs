@@ -34,7 +34,11 @@ export class NavbarComponent implements OnInit {
     const extractDates = (str: string) => {
       const noDates = ['', ''];
       if (str) {
-        if (str.length < 10) this.datesError = new ErrorAlert('Nieprawidłowy format daty', 'Za mało znaków');
+        if (str.length < 10)
+          this.datesError = new ErrorAlert(
+            'Nieprawidłowy format daty',
+            'Za mało znaków',
+          );
         const regex = /( |,|;)/;
         const cleanString = str.trim().replace(regex, ' ');
 
