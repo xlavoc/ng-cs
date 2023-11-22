@@ -16,15 +16,16 @@
         </div>
         <div class="col-12 col-md-6 col-xl-3">
           <label for="inputFlightDateRange" class="form-label mb-1 small"
-            >Data lotu</label
+            >Data lotu {{ flightDateRange }}</label
           >
-          <input
+          <ngbd-datepicker-range (dateRangeInput)="onFlightDateRangeInput($event)"></ngbd-datepicker-range>
+          <!-- <input
             type="text"
             class="form-control bg-white"
             id="inputFlightDateRange"
             placeholder="RRRR/MM/DD - RRRR/MM/DD"
             #flightDateRange
-          />
+          /> -->
         </div>
         <div class="col-12 col-md-6 col-xl-3 mb-2">
           <input

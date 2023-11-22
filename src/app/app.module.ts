@@ -11,6 +11,7 @@ import { CardListComponent } from './card-list/card-list.component';
 import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from './details/details.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbdDatepickerRange } from './datepicker/datepicker-range';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     HttpClientModule,
     NgbModule,
+    NgbdDatepickerRange,
   ],
   providers: [],
   bootstrap: [AppComponent],

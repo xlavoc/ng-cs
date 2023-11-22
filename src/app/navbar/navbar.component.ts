@@ -16,25 +16,26 @@ import { ErrorAlert } from '../error-alert.model';
 })
 export class NavbarComponent implements OnInit {
   @ViewChild('flightName') flightNameInputRef: ElementRef;
-  @ViewChild('flightDateRange') flightDateRangeInputRef: ElementRef;
+  //@ViewChild('flightDateRange') flightDateRangeInputRef: ElementRef;
   @ViewChild('showSuccessFlights') showSuccessFlightsCheckboxRef: ElementRef;
   @Output() searchParamsAdded = new EventEmitter<SearchParams>();
   @Output() errorOccurred = new EventEmitter<ErrorAlert>();
   datesError: ErrorAlert = null;
+  flightDateRange: string = null;
 
   ngOnInit(): void {}
 
   onSearchFlights() {
     const flightName = this.flightNameInputRef.nativeElement.value;
-    const flightDateRange = this.flightDateRangeInputRef.nativeElement.value;
+    // const flightDateRange = this.flightDateRangeInputRef.nativeElement.value;
     const flightShowSuccess =
       this.showSuccessFlightsCheckboxRef.nativeElement.checked;
     this.datesError = null;
 
     const extractDates = (str: string) => {
       const noDates = ['', ''];
-      const s = str.trim();
-      if (s) {
+      if (str) {
+        const s = str.trim();
         if (s.length < 10) {
           this.datesError = new ErrorAlert(
             'Nieprawidłowy format daty',
@@ -77,14 +78,21 @@ export class NavbarComponent implements OnInit {
 
     const newSearch = new SearchParams(
       flightName,
-      extractDates(flightDateRange)[0],
-      extractDates(flightDateRange)[1],
+      extractDates(this.flightDateRange)[0],
+      extractDates(this.flightDateRange)[1],
       !flightShowSuccess ? undefined : true,
     );
     this.searchParamsAdded.emit(newSearch);
+    console.log(newSearch);
+
   }
 
   onErrorOccurred() {
     this.errorOccurred.emit(this.datesError);
   }
+
+  onFlightDateRangeInput(input: string) {
+    this.flightDateRange = input;
+  }
+
 }
